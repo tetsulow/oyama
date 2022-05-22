@@ -1,12 +1,16 @@
 class ListsController < ApplicationController
+
   def new
     @list = List.new
   end
 
   def create
     @list = List.new(list_params)
-    @list.save
-    render 'show'
+    if @list.save
+      redirect_to list_path(@list.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -24,9 +28,9 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
-      redirect_to list_path(@list), notice: "記事の内容が更新されました"
+      redirect_to list_path(@list)
     else
-      render 'edit'
+      render :edit
     end
   end
 
