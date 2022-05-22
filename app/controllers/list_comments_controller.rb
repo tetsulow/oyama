@@ -8,6 +8,11 @@ class ListCommentsController < ApplicationController
     redirect_to list_path(@list)
   end
 
+  def destroy
+    ListComment.find(params[:id]).destroy
+    redirect_to list_path(params[:list_id])
+  end
+
   private
 
   def list_comment_params

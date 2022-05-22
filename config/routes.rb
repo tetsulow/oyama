@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   resources :lists do
-    resources :list_comments, only: [:create]
+    resources :list_comments, only: [:create, :destroy]
   end
 
 end
