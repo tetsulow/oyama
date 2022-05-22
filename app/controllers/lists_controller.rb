@@ -9,9 +9,9 @@ class ListsController < ApplicationController
     render 'show'
   end
 
-  # def index
-  #   @lists = List.all
-  # end
+  def index
+    @lists = List.all
+  end
 
   def show
     @list = List.find(params[:id])
@@ -33,7 +33,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to 'index'
+    redirect_to root_path
   end
 
   def list_params

@@ -2,6 +2,5 @@
 <% lists.each do |list| %>
   <%= link_to list_path(list.id) do %>
     <p><%= list.title %></p>
-    <p><%= list.body %></p>
   <% end %>
 <% end %>
