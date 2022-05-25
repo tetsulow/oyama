@@ -1,6 +1,6 @@
 <h3>管理人ログイン</h3>
 <%= form_for(:session, url: login_path) do |f| %>
   name<%= f.text_field :name %>
-    email<%= f.text_field :email %>
+    password<%= f.text_field :password %>
     <%= f.submit 'ログイン' %>
 <% end %>
