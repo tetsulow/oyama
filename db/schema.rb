@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_22_121412) do
+ActiveRecord::Schema.define(version: 2022_05_25_113737) do
 
   create_table "list_comments", force: :cascade do |t|
     t.string "commenter"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2022_05_22_121412) do
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
 end

@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     resources :list_comments, only: [:create, :destroy]
   end
 
+  get 'login' => 'sessions#login'
+  post 'login' => 'sessions#login'
+  delete 'logout' => 'sessions#destroy'
+
 end
