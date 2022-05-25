@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :admin_user, only: :destroy
 
   def new
     @list = List.new
@@ -39,6 +40,10 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
     redirect_to root_path
+  end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 
   def list_params
