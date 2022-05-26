@@ -9,9 +9,9 @@
   <% @list.list_comments.each do |list_comment| %>
     <%= list_comment.commenter %>
     <%= list_comment.created_at.strftime('%Y/%m/%d') %><%= list_comment.comment %>
-    <%#if current_user.admin? && !current_user?(user) %>
+    <% if @current_user %>
       <%= link_to "削除", list_list_comment_path(list_comment.list, list_comment), method: :delete %>
-    <%# end %>
+    <% end %>
   <% end %>
 </div>
 <div>
