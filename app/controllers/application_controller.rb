@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
-  def require_sign_in
-    redirect_to root_path unless current_user
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
 end
