@@ -4,6 +4,11 @@
 <h2>本文</h2>
 <p><%= @list.body %></p>
 
+<h2>タグ</h2>
+<% @list.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
 <div>
   <p>コメント件数：<%= @list.list_comments.count %></p>
   <% @list.list_comments.each do |list_comment| %>
