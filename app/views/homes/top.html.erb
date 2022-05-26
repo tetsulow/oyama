@@ -1,6 +1,8 @@
 <h3>大山の地域情報、面白ネタなどの情報を発信していくサイトです。</h3>
-<% @tags.each do |tag| %>
-    <%= tag.name %>
+<%= form_tag root_path, method: :get do %>
+  <% @tags.each do |tag| %>
+      <%= link_to tag.name, root_path(name: tag.id) %>
+  <% end %>
 <% end %>
 <%= render "lists/index", lists: @lists %>
 
