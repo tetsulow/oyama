@@ -1,9 +1,12 @@
 <h3>大山の地域情報、面白ネタなどの情報を発信していくサイトです。</h3>
-<%= form_tag root_path, method: :get do %>
+
+<%= form_tag root_path, method: :get do %>  <!--#投稿された記事をジャンルごとに絞り込む-->
   <% @tags.each do |tag| %>
       <%= link_to tag.name, root_path(name: tag.id) %>
   <% end %>
 <% end %>
-<%= render "lists/index", lists: @lists %>
+
+<!--投稿された記事の一覧を表示する部分テンプレート-->
+<%= render "lists/index", lists: @lists %> 
 
 

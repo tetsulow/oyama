@@ -1,32 +1,32 @@
 <h2>タイトル</h2>
-<p><%= @list.title %></p>
+<p><%= @list.title %></p>  <!--記事のタイトル-->
 
 <h2>本文</h2>
-<p><%= @list.body %></p>
+<p><%= @list.body %></p>  <!--記事の本文-->
 
 <h2>タグ</h2>
 <% @list.tags.each do |tag| %>
-    <%= tag.name %>
+    <%= tag.name %>              <!--記事に付けられたタグを表示-->
 <% end %>
 
 <div>
   <p>コメント件数：<%= @list.list_comments.count %></p>
   <% @list.list_comments.each do |list_comment| %>
-    <%= list_comment.commenter %>
-    <%= list_comment.created_at.strftime('%Y/%m/%d') %><%= list_comment.comment %>
-    <% if @current_user %>
+    <%= list_comment.commenter %>         <!--記事にコメントをしたユーザーの名前-->
+    <%= list_comment.created_at.strftime('%Y/%m/%d') %><%= list_comment.comment %>  <!--記事にコメントが付けられた日付-->
+    <% if @current_user %>  <!--管理者がログインしている場合、コメントの削除ができるリンクを表示-->
       <%= link_to "削除", list_list_comment_path(list_comment.list, list_comment), method: :delete %>
     <% end %>
   <% end %>
 </div>
 <div>
-  <%= form_with model: [@list, @list_comment] do |f| %>
+  <%= form_with model: [@list, @list_comment] do |f| %>  <!--コメントの投稿フォーム-->
     <%= f.text_area :commenter, placeholder: "名前をここに" %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
-<% if @current_user %>
+<% if @current_user %>  <!--管理者がログインしているとき、記事の編集・削除ができる-->
   <%= link_to "編集", edit_list_path(@list.id) %>
   <%= link_to "削除", list_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
